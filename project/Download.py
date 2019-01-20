@@ -36,7 +36,13 @@ def main():
 		if(i%10 == 0):
 			print("wait")
 			time.sleep(30)
-	shutil.make_archive(folder+"/chapter"+str(ch), 'cbr', folder)
+	file = newpath+"/chapter"+str(ch)
+	shutil.make_archive(newpath+"/chapter"+str(ch), 'zip', folder)
+	print("make zip")
+	thisFile = file + ".zip" 
+	base = os.path.splitext(thisFile)[0]
+	print(base)
+	os.rename(thisFile, base + ".cbr")
 def downloadimage(url,n,i,folder):
 	req = Request(url, headers=hdr)
 	try:
